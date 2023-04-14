@@ -7,7 +7,11 @@
 
 import SwiftUI
 import Combine
-//https://jsonplaceholder.typicode.com/posts
+
+/*
+ Swiftful Thinking - https://www.youtube.com/watch?v=fdxFp5vU6MQ&list=PLwvDm4VfkdpiagxAXCT33Rkwnc5IVhTar&index=25
+ Data Source: https://jsonplaceholder.typicode.com/posts
+*/
 
 struct PostModel: Identifiable, Codable {
     let userId: Int
@@ -17,6 +21,7 @@ struct PostModel: Identifiable, Codable {
 }
 
 class DownloadWithCombineViewModel: ObservableObject {
+    
     @Published var posts: [PostModel] = []
     var cancellables = Set<AnyCancellable>()
     
@@ -78,6 +83,7 @@ struct ContentView: View {
                     Text(post.body)
                         .foregroundColor(.gray)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
